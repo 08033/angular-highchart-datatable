@@ -38,12 +38,26 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
             }// Add ColVis compatibility
         })// Active Buttons extension
         .withButtons([
+            {
+                extend: 'excel',
+                title: 'Data export excel'
+            },
+            {
+                extend: 'pdfHtml5',
+                title: 'Data export pdfHtml5'
+            },
+            {
+                extend: 'csv',
+                title: 'Data export csv'
+            },
+
             'colvis',
             'copy',
-            'print',
+            'print'
+            /*,
             'excel',
             'pdfHtml5',
-            'csv'
+            'csv'*/
         ]);
     //.withOptions('responsive', true);
 
