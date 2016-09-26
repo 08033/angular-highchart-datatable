@@ -1,0 +1,23 @@
+[
+  {
+    id: '1',
+    name: 'Foo',
+    text: 'Bar',
+    detail: 'Detail is good',
+    image: 'NA'
+  },
+  {
+    id: '123',
+    name: 'Someone',
+    text: 'Youknow',
+    detail: 'Detail is ok',
+    image: 'PNG format'
+  },
+  {
+    id: '987',
+    name: 'Iamout',
+    text: 'Ofinspiration',
+    detail: 'Detail is needed',
+    image: 'JPEG supported only'
+  }
+]
