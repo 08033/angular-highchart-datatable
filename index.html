@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="Angular101">
+<head>
+    <title>AngularJS with WebStorm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Jquery and DataTable-->
+    <script src="app/js/jquery.js"></script>
+    <script src="app/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+
+    <script src="app/js/dataTables.responsive.min.js"></script>
+
+    <!--Angular Scripts-->
+    <script src="app/js/angular.min.js"></script>
+    <script src="app/js/angular-route.js"></script>
+    <script src="app/js/angular-datatables.min.js"></script>
+    <script src="app/js/angular-datatables.bootstrap.min.js"></script>
+
+    <script src="app/js/jszip.min.js"></script>
+    <script src="app/js/pdfmake.min.js"></script>
+    <script src="app/js/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+
+    <script src="app/js/angular-datatables.buttons.min.js"></script>
+
+    <!--Bootstrap-->
+    <script src="app/js/bootstrap.min.js"></script>
+
+    <!--HighCharts-->
+    <script src="app/js/highcharts.js"></script>
+    <script src="app/js/drilldown.js"></script>
+
+    <!--App Modules and Controllers-->
+    <script src="app/app.js"></script>
+    <script src="app/controllers/controllers.js"></script>
+    <script src="app/controllers/barController.js"></script>
+    <script src="app/controllers/drillDownController.js"></script>
+    <script src="app/controllers/lineController.js"></script>
+    <script src="app/controllers/multiAxisController.js"></script>
+    <script src="app/controllers/pieController.js"></script>
+    <script src="app/controllers/stackedController.js"></script>
+    <script src="app/controllers/dataTableController.js"></script>
+</head>
+<body>
+<link rel="stylesheet" href="app/css/bootstrap.css"/>
+<link rel="stylesheet" href="app/css/datatables.bootstrap.min.css"/>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+
+<link rel="stylesheet" href="app/css/angular-datatables.css"/>
+<link rel="stylesheet" href="app/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" href="app/css/responsive.dataTables.min.css"/>
+
+
+<div class="container">
+    <br>
+    <div ng-controller="portletController as portletCtrl">
+        <div class="row">
+            <div class="col-sm-2 text-right">Title:</div>
+            <div class="col-sm-6"><input type="text" ng-model="name" class="form-control"></div>
+            <div class="col-sm-4"><h3 ng-bind="name"></h3></div>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/" ng-click="portletCtrl.selectTab(1)">Basic</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ng-class="{active:portletCtrl.isSelected(1)}"><a href="#lineChart"
+                                                                     ng-click="portletCtrl.selectTab(1)">lineChart</a>
+                </li>
+                <li ng-class="{active:portletCtrl.isSelected(2)}"><a href="#barChart"
+                                                                     ng-click="portletCtrl.selectTab(2)">barChart</a>
+                </li>
+                <li ng-class="{active:portletCtrl.isSelected(4)}"><a href="#pieChart"
+                                                                     ng-click="portletCtrl.selectTab(4)">pieChart</a>
+                </li>
+                <li ng-class="{active:portletCtrl.isSelected(7)}"><a href="#dataTable"
+                                                                     ng-click="portletCtrl.selectTab(7)">dataTable</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="h4">
+                        <a href="#/stackedChart" ng-click="portletCtrl.selectTab(3)">Advanced</a>
+                    </li>
+                    <li ng-class="{active:portletCtrl.isSelected(3)}"><a href="#stackedChart"
+                                                                         ng-click="portletCtrl.selectTab(3)">stackedChart</a>
+                    </li>
+                    <li ng-class="{active:portletCtrl.isSelected(5)}"><a href="#multiAxisChart"
+                                                                         ng-click="portletCtrl.selectTab(5)">multiAxisChart</a>
+                    </li>
+                    <li ng-class="{active:portletCtrl.isSelected(6)}"><a href="#drillDownChart"
+                                                                         ng-click="portletCtrl.selectTab(6)">drillDownChart</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9">
+                <div class="ng-view"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
