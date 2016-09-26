@@ -1,14 +1,14 @@
 [
   {
     id: '1',
-    name: 'Foo',
+    name: 'FooMana',
     text: 'Bar',
     detail: 'Detail is good',
     image: 'NA'
   },
   {
     id: '123',
-    name: 'Someone',
+    name: 'Someone Name',
     text: 'Youknow',
     detail: 'Detail is ok',
     image: 'PNG format'
@@ -16,7 +16,7 @@
   {
     id: '987',
     name: 'Iamout',
-    text: 'Ofinspiration',
+    text: 'Ofinspiration is',
     detail: 'Detail is needed',
     image: 'JPEG supported only'
   }
