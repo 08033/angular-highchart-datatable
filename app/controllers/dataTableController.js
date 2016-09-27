@@ -16,6 +16,7 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
 
     //Options and Columns
     vm.dtOptions = DTOptionsBuilder.fromSource('https://l-lin.github.io/angular-datatables/data.json').withPaginationType('full_numbers')
+        .withOption('responsive', true)
         .withBootstrap()
         .withBootstrapOptions({
             TableTools: {
@@ -55,11 +56,10 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
             'copy',
             'print'
             /*,
-            'excel',
-            'pdfHtml5',
-            'csv'*/
+             'excel',
+             'pdfHtml5',
+             'csv'*/
         ]);
-    //.withOptions('responsive', true);
 
     vm.dtColumns = [
         DTColumnBuilder.newColumn('id').withTitle('ID'),
