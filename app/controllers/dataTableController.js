@@ -36,13 +36,78 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
         , image: 'PNG format'
     }, {id: '987', name: 'Iamout', text: 'Ofinspiration', detail: 'Detail is needed', image: 'JPEG supported only'}];
 
+    vm.queueData = [{
+        category: 'Checkbooks',
+        serviceNum: '102',
+        servicePer: '20%',
+        waitingAvg: '00:10:20',
+        waitingSLA: '30%',
+        serviceAvg: '00:10:20',
+        serviceSLA: '30%',
+        noShowNum: '100',
+        noShowPer: '30%'
+    }, {
+        category: 'Preferred cashier',
+        serviceNum: '101',
+        servicePer: '20%',
+        waitingAvg: '00:10:20',
+        waitingSLA: '30%',
+        serviceAvg: '00:10:20',
+        serviceSLA: '30%',
+        noShowNum: '102',
+        noShowPer: '50%'
+    }, {
+        category: 'Executive vip',
+        serviceNum: '104',
+        servicePer: '30%',
+        waitingAvg: '00:10:20',
+        waitingSLA: '30%',
+        serviceAvg: '00:10:20',
+        serviceSLA: '30%',
+        noShowNum: '103',
+        noShowPer: '30%'
+    },
+        {
+            category: '1 to 4 movements',
+            serviceNum: '100',
+            servicePer: '25%',
+            waitingAvg: '00:10:20',
+            waitingSLA: '50%',
+            serviceAvg: '00:10:20',
+            serviceSLA: '60%',
+            noShowNum: '101',
+            noShowPer: '20%'
+        }
+        , {
+            category: 'Regular executive',
+            serviceNum: '105',
+            servicePer: '40%',
+            waitingAvg: '00:10:20',
+            waitingSLA: '30%',
+            serviceAvg: '00:10:20',
+            serviceSLA: '30%',
+            noShowNum: '104',
+            noShowPer: '30%'
+        }, {
+            category: 'Cheques',
+            serviceNum: '100',
+            servicePer: '50%',
+            waitingAvg: '00:10:20',
+            waitingSLA: '30%',
+            serviceAvg: '00:10:20',
+            serviceSLA: '40%',
+            noShowNum: '100',
+            noShowPer: '40%'
+        }];
+
+
     //Options and Columns
     //fromSource('https://l-lin.github.io/angular-datatables/data.json')
     vm.dtOptions = DTOptionsBuilder.fromFnPromise(function () {
-         var defer = $q.defer();
-         defer.resolve(vm.tableData);
-         return defer.promise;
-         })
+            var defer = $q.defer();
+            defer.resolve(vm.queueData);
+            return defer.promise;
+        })
         .withPaginationType('full_numbers')
         .withOption('responsive', true)
         .withBootstrap()
@@ -184,9 +249,11 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
 
                     doc.styles.tableBodyOdd = {fontSize: 6};
                     doc.styles.tableBodyEven = {fontSize: 6};
-                    doc.styles.tableHeader = {fontSize: 7, margin: [0, 15]};
+                    doc.styles.tableHeader = {fontSize: 7, margin: [0, 15], fillColor: '', color: '#000', bold: true};
 
                     doc.content[4].table.widths = '*';
+                    doc.content[4].table.headerRows = 2;
+
                     doc.content[4].layout = {
                         hLineWidth: function (i, node) {
                             return (i === 0 || i === node.table.body.length) ? 1 : 1;
@@ -200,33 +267,6 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
                         vLineColor: function (i, node) {
                             return (i === 0 || i === node.table.widths.length) ? '#eee' : '#eee';
                         }
-                    };
-
-                    doc.content[4].table.body[0][0].style = {
-                        fillColor: '',
-                        color: '#000',
-                        bold: true
-                    };
-                    doc.content[4].table.body[0][1].style = {
-                        fillColor: '',
-                        color: '#000',
-                        bold: true
-                    };
-                    doc.content[4].table.body[0][2].style = {
-                        fillColor: '',
-                        color: '#000',
-                        bold: true,
-                        margin: [0, 15, 0, 15]
-                    };
-                    doc.content[4].table.body[0][3].style = {
-                        fillColor: '',
-                        color: '#000',
-                        bold: true
-                    };
-                    doc.content[4].table.body[0][4].style = {
-                        fillColor: '',
-                        color: '#000',
-                        bold: true
                     };
 
 
@@ -247,14 +287,24 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
 
     vm.dtColumns = [
         /*DTColumnBuilder.newColumn('id').withTitle('ID'),
-        DTColumnBuilder.newColumn('firstName').withTitle('First name'),
-        DTColumnBuilder.newColumn('lastName').withTitle('Last name')*/
+         DTColumnBuilder.newColumn('firstName').withTitle('First name'),
+         DTColumnBuilder.newColumn('lastName').withTitle('Last name')*/
 
-        DTColumnBuilder.newColumn('id').withTitle('ID'),
+        /*DTColumnBuilder.newColumn('id').withTitle('ID'),
          DTColumnBuilder.newColumn('name').withTitle('First name'),
          DTColumnBuilder.newColumn('text').withTitle('Last name'),
          DTColumnBuilder.newColumn('detail').withTitle('Detail'),
-         DTColumnBuilder.newColumn('image').withTitle('Image')
+         DTColumnBuilder.newColumn('image').withTitle('Image')*/
+
+        DTColumnBuilder.newColumn('category').withTitle('Category'),
+        DTColumnBuilder.newColumn('serviceNum').withTitle('Ticket Served #'),
+        DTColumnBuilder.newColumn('servicePer').withTitle('Ticket Served %'),
+        DTColumnBuilder.newColumn('waitingAvg').withTitle('Waiting time Avg.'),
+        DTColumnBuilder.newColumn('waitingSLA').withTitle('Waiting time SLA'),
+        DTColumnBuilder.newColumn('serviceAvg').withTitle('Service time Avg.'),
+        DTColumnBuilder.newColumn('serviceSLA').withTitle('Service time SLA'),
+        DTColumnBuilder.newColumn('noShowNum').withTitle('No show #'),
+        DTColumnBuilder.newColumn('noShowPer').withTitle('No show %')
     ];
 
 }]);
