@@ -211,7 +211,7 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
 
                     //app/images/ngwavetecLogo.png
 
-                    /*var dataUrl = '';
+                    /* var dataUrl = '';
                      toDataUrl('app/images/ngwavetecLogo.png', function (base64Img) {
                      console.log(base64Img);
                      dataUrl = base64Img;
@@ -249,10 +249,62 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
 
                     doc.styles.tableBodyOdd = {fontSize: 6};
                     doc.styles.tableBodyEven = {fontSize: 6};
-                    doc.styles.tableHeader = {fontSize: 7, margin: [0, 15], fillColor: '', color: '#000', bold: true};
+                    doc.styles.tableHeader = {fontSize: 7, fillColor: '', color: '#000', bold: true}; // margin: [0, 15]
+
 
                     doc.content[4].table.widths = '*';
                     doc.content[4].table.headerRows = 2;
+
+                    var mainHeader = [];
+                    mainHeader[0] = {
+                        text: 'Category',
+                        alignment: 'center',
+                        style: 'tableHeader',
+                        rowSpan: 2
+                    };
+                    mainHeader[1] = {
+                        text: 'Ticket Served',
+                        alignment: 'center',
+                        style: 'tableHeader',
+                        colSpan: 2
+                    };
+                    mainHeader[2] = {};
+                    mainHeader[3] = {
+                        text: 'Waiting time',
+                        alignment: 'center',
+                        style: 'tableHeader'
+                        ,
+                        colSpan: 2
+                    };
+                    mainHeader[4] = {};
+                    mainHeader[5] = {
+                        text: 'Service time',
+                        alignment: 'center',
+                        style: 'tableHeader',
+                        colSpan: 2
+                    };
+                    mainHeader[6] = {};
+                    mainHeader[7] = {
+                        text: 'No show',
+                        alignment: 'center',
+                        style: 'tableHeader',
+                        colSpan: 2
+                    };
+                    mainHeader[8] = {};
+                    doc.content[4].table.body.splice(0, 0, mainHeader);
+
+                    var headerSecond=[];
+                    headerSecond[0]={};
+                    headerSecond[1]={ text: '#', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[2]={ text: '%', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[3]={ text: 'Avg', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[4]={ text: 'SLA', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[5]={ text: 'Avg', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[6]={ text: 'SLA', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[7]={ text: '#', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[8]={ text: '%', alignment: 'center', style: 'tableHeader'};
+
+                    doc.content[4].table.body[1] = headerSecond;
 
                     doc.content[4].layout = {
                         hLineWidth: function (i, node) {
