@@ -133,14 +133,19 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
         })// Active Buttons extension
         .withButtons([
             {
-                extend: 'excel',
-                title: 'Data export excel'
+                extend: 'excelHtml5',
+                title: 'Service-performance-Summary-Los-Angeles-branch-10-ago-2016-to-10-sep-2016',
+                customizeData: function (data) {
+                    //console.log(data);
+                    data.header = ["", "Ticket Served", "", "Waiting time", "", "Service time", "", "No show", ""];
+                    data.body.splice(0, 0, ["Category", "#", "%", "Avg", "SLA", "Avg", "SLA", "#", "%"]);
+                }
             },
             {
                 extend: 'pdfHtml5',
                 title: 'Summary',
                 customize: function (doc) {
-                    console.log(doc);
+                    //console.log(doc);
 
                     //Images supported: png, jpg
                     // a string or { width: number, height: number }
@@ -293,16 +298,16 @@ var dataTableCtrl = app.controller('dataTableController', ['DTOptionsBuilder', '
                     mainHeader[8] = {};
                     doc.content[4].table.body.splice(0, 0, mainHeader);
 
-                    var headerSecond=[];
-                    headerSecond[0]={};
-                    headerSecond[1]={ text: '#', alignment: 'center', style: 'tableHeader'};
-                    headerSecond[2]={ text: '%', alignment: 'center', style: 'tableHeader'};
-                    headerSecond[3]={ text: 'Avg', alignment: 'center', style: 'tableHeader'};
-                    headerSecond[4]={ text: 'SLA', alignment: 'center', style: 'tableHeader'};
-                    headerSecond[5]={ text: 'Avg', alignment: 'center', style: 'tableHeader'};
-                    headerSecond[6]={ text: 'SLA', alignment: 'center', style: 'tableHeader'};
-                    headerSecond[7]={ text: '#', alignment: 'center', style: 'tableHeader'};
-                    headerSecond[8]={ text: '%', alignment: 'center', style: 'tableHeader'};
+                    var headerSecond = [];
+                    headerSecond[0] = {};
+                    headerSecond[1] = {text: '#', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[2] = {text: '%', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[3] = {text: 'Avg', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[4] = {text: 'SLA', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[5] = {text: 'Avg', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[6] = {text: 'SLA', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[7] = {text: '#', alignment: 'center', style: 'tableHeader'};
+                    headerSecond[8] = {text: '%', alignment: 'center', style: 'tableHeader'};
 
                     doc.content[4].table.body[1] = headerSecond;
 
